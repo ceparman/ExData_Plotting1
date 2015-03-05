@@ -15,9 +15,13 @@ trim_data$day<-wday(trim_data$date,label=TRUE)
 png(filename = "plot4.png",
     width = 480, height = 480,)
 
+#create 4 panel plot
+
 par(mfrow =c(2,2))
 
 #plot #1
+
+#same as plot #3
 
 daysBoundry<-c(0,1441,2881)
 
@@ -28,12 +32,18 @@ axis(1,daysBoundry,labels=c("Thu","Fri","Sat"))
 
 #plot #2
 
+#plot voltage
+
 plot(as.numeric(trim_data$Voltage),     
      ylab="Voltage" , 
      xaxt="n",type="l",xlab="datetime")
+
+#add axis
+
 axis(1,daysBoundry,labels=c("Thu","Fri","Sat"))
 
 #plot #3
+#sample as plot #3
 
 plot(as.numeric(trim_data$Sub_metering_1),     
      ylab="Energy sub metering" , 
@@ -41,13 +51,16 @@ plot(as.numeric(trim_data$Sub_metering_1),
 lines(as.numeric(trim_data$Sub_metering_2),col="red")
 lines(as.numeric(trim_data$Sub_metering_3),col="blue")
 axis(1,daysBoundry,labels=c("Thu","Fri","Sat"))
+
+#only change - remove box from legend
+
 legend("topright",c("Sub_metering_1","Sub_metering_2","Sub_metering_3"),
        col=c("black","red","blue"), lty=1,bty="n")
 
 #plot #4
 
 
-
+#plot similar to second in the set with ne variable
 
 plot(as.numeric(trim_data$Global_reactive_power),     
      ylab="Global_reactive_power" , 
